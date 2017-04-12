@@ -1,0 +1,22 @@
+{
+  "name": "gxx",
+  "version": "1.0.0",
+  "description": "a-litter-shopping",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cleartime/a-little-shopping.git"
+  },
+  "author": "gxx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cleartime/a-little-shopping/issues"
+  },
+  "homepage": "https://github.com/cleartime/a-little-shopping#readme",
+  "devDependencies": {
+    "express": "^4.15.2"
+  }
+}
