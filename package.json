@@ -18,5 +18,8 @@
   "homepage": "https://github.com/cleartime/a-little-shopping#readme",
   "devDependencies": {
     "express": "^4.15.2"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6"
   }
 }
