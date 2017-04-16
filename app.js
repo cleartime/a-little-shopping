@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 var mongoose = require('mongoose');
 //引用模块
 var bodyParser = require('body-parser');
@@ -7,7 +8,7 @@ var multer = require('multer');
 var session = require('express-session');
 
 global.dbHelper = require( './common/dbHelper' )
-global.db = mongoos.connect("mongodb://127.0.0.1:27017/test");
+global.db = mongoose.connect("mongodb://127.0.0.1:27017/test");
 app.use(session({
     secret:'secret',
     cookie:{
@@ -44,7 +45,7 @@ app.use(function(req, res, next){
 require('./routes')(app); //app:express对象。;
 
 app.get('/', function (req, res) {  
-   res.render('register');
+   res.render('login');
 });
  
 app.listen(3001);
