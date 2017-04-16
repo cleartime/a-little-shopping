@@ -4,12 +4,12 @@ module.exports = function ( app ) {
       res.render('register');
   });
   app.post('/register', function (req, res) {
-      console.log(req)
      var User = global.dbHelper.getModel('user'),
      uname = req.body.uname;
+      console.log(uname)
      User.findOne({name: uname}, function (error, doc) {
        if (doc) {
-            // req.session.error = '用户名已存在！';
+            req.session.error = '用户名已存在！';
             res.send(500);
         } else {
             User.create({
@@ -19,7 +19,7 @@ module.exports = function ( app ) {
                 if (error) {
                     res.send(500);
                 } else {
-                    // req.session.error = '用户名创建成功！';
+                    req.session.error = '用户名创建成功！';
                     res.send(200);
                 }
             });

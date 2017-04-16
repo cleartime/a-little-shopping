@@ -6,31 +6,29 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var session = require('express-session');
 
-global.dbHelper = require( './common/dbHelper' );
-
-require('./routes')(app); //app:express对象。
-
- // 调用中间件使用
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(multer());
-
-
-
-mongoose.connect("mongodb://127.0.0.1:27017/test");
- 
+global.dbHelper = require( './common/dbHelper' )
+global.db = mongoose.connect("mongodb://127.0.0.1:27017/test");
 app.use(session({
     secret:'secret',
     cookie:{
         maxAge:1000*60*30
     }
 }));
+ 
+
 
 
 app.set( 'view engine', 'html' );
 app.engine( '.html', require( 'ejs' ).__express );
+
 app.set('views', require('path').join(__dirname, 'views'));	
+
 app.use(express.static(require('path').join(__dirname, 'public')));
+
+ //调用中间件使用
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
 
 
 
@@ -43,6 +41,7 @@ app.use(function(req, res, next){
     next();
 });
 
+require('./routes')(app); //app:express对象。;
 
 app.get('/', function (req, res) {  
    res.render('register');
