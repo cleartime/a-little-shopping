@@ -6,7 +6,6 @@ module.exports = function ( app ) {
   app.post('/register', function (req, res) {
      var User = global.dbHelper.getModel('user'),
      uname = req.body.uname;
-      console.log(uname)
      User.findOne({name: uname}, function (error, doc) {
        if (doc) {
             req.session.error = '用户名已存在！';
