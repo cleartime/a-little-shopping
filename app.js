@@ -22,8 +22,7 @@ app.use(session({
 app.set( 'view engine', 'html' );
 app.engine( '.html', require( 'ejs' ).__express );
 
-app.set('views', require('path').join(__dirname, 'views'));	
-
+app.set('views', path.join(__dirname, 'views'));
 // 设定静态文件目录，比如本地文件
 app.use(express.static(path.join(__dirname, 'public')));
  //调用中间件使用
