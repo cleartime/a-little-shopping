@@ -6,15 +6,15 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var session = require('express-session');
 
-
 global.dbHelper = require( './common/dbHelper' );
+
+require('./routes')(app); //app:express对象。
 
  // 调用中间件使用
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(multer());
 
-require('./routes')(app); //app:express对象。
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/test");
