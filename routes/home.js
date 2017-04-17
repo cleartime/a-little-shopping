@@ -1,16 +1,22 @@
-module.exports = function ( app ) {
+module.exports = function (app) {
     app.get('/home', function (req, res) {
-        if(req.session.user){
+        if (req.session.user) {
             var Commodity = global.dbHelper.getModel('commodity');
             Commodity.find({}, function (error, docs) {
-                res.render('home',{Commoditys:docs});
+                if (!docs.length) {
+                    res.render('addcommodity')
+                } else {
+                    res.render('home', {
+                        Commoditys: docs
+                    });
+                }
             });
-        }else{
+        } else {
             req.session.error = "请先登录"
             res.redirect('/login');
         }
     });
-    app.get('/addcommodity', function(req, res) {
+    app.get('/addcommodity', function (req, res) {
         res.render('addcommodity');
     });
     app.post('/addcommodity', function (req, res) {
@@ -22,7 +28,7 @@ module.exports = function ( app ) {
         }, function (error, doc) {
             if (doc) {
                 res.send(200);
-            }else{
+            } else {
                 res.send(404);
             }
         });
