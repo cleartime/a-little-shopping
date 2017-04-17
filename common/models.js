@@ -14,8 +14,17 @@ module.exports = {
         }
     },
     commodity: {
-        name: String,
-        price: Number,
-        imgSrc: String
+        name: {
+            type: String,
+            required: true
+        },
+        price: {
+            type: Number,
+            required: true
+        },
+        imgSrc: {
+            type: String,
+            required: true
+        }
     }
 };

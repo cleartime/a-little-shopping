@@ -29,7 +29,7 @@ module.exports = function (app) {
             if (doc) {
                 res.send(200);
             } else {
-                res.send(500);
+               res.status(500).json({ error: error })
             }
         });
     });
