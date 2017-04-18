@@ -26,5 +26,35 @@ module.exports = {
             type: String,
             required: true
         }
+    },
+    cart: {
+        uId: {
+            type: String,
+            required: true
+        },
+        cId: {
+            type: String,
+            required: true
+        },
+        cName: {
+            type: String,
+            required: true
+        },
+        cPrice: {
+            type: String,
+            required: true
+        },
+        cImgSrc: {
+            type: String,
+            required: true
+        },
+        cQuantity: {
+            type: Number,
+            required: true
+        },
+        cStatus: {
+            type: Boolean,
+            default: false
+        }
     }
 };
