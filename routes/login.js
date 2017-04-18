@@ -22,7 +22,7 @@ module.exports = function (app) {
             } else {
                 if (req.body.upwd != doc.password) {
                     req.session.error = "密码错误!";
-                    res.status(404)
+                    res.send(404)
                 } else {
                     req.session.user = doc;
                     res.send(200);
