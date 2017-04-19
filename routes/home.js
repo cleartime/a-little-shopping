@@ -21,16 +21,22 @@ module.exports = function (app) {
     });
     app.post('/addcommodity', function (req, res) {
         var Commodity = global.dbHelper.getModel('commodity');
-        Commodity.create({
-            name: req.body.name,
-            price: req.body.price,
-            imgSrc: req.body.imgSrc
-        }, function (error, doc) {
-            if (doc) {
-                res.send(200);
-            } else {
-               res.status(500).json({ error: error })
-            }
-        });
+        if(!req.body.price.length||!req.body.name.length){
+            req.session.error = "请正确添加商品";
+            res.send(404)
+        }else{
+            Commodity.create({
+                        name: req.body.name,
+                        price: req.body.price,
+                        imgSrc: req.body.imgSrc
+                    }, function (error, doc) {
+                        if (doc) {
+                            res.send(200);
+                        } else {
+                        res.status(500).json({ error: error })
+                        }
+                    });
+        }
+       
     });
 }
