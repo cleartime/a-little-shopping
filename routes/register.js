@@ -1,7 +1,7 @@
 // app：express对象
 module.exports = function (app) {
     app.get('/register', function (req, res) {
-        res.render('register');
+        // res.render('register');
     });
     app.post('/register', function (req, res) {
         var User = global.dbHelper.getModel('user'),
