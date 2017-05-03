@@ -10,7 +10,7 @@ module.exports = function (app) {
             name: uname
         }, function (error, doc) {
             if (doc) {
-                req.session.error = '用户名已存在！';
+                req.session.error = '用户名已存在a！';
                 res.status(500).json({
                     error: error
                 })
